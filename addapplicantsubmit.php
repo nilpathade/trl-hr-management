@@ -38,10 +38,15 @@ if($registration == md5("tlraddapplicantsubmit")){
 	$today = date('Y-m-d');
 	
 	if(count($checkRow) == 0){
-	   // $insertSql = "insert into tlr_applicants (`applicationNo`,`name`, `password`, `contactnumber`, `email`, `currentcompany`, `currentdesignation`, `currentctc`, `expectedctc`, `noticeperiod`, `urgencylevel`, `interest`, `docupload`, `signature`, `createddate`,`isDeleted`) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
-		//$resultRow = pdoQuery($insertSql,array('A'.$applicantNo,$name,$password,$contactnumber,$email,$currentcompany,$currentdesignation,$currentctc,$expectedctc,$noticeperiod,$urgencylevel,$interest,$uploadcv,$signature,$today,'N'));
-		$insertSql = "insert into tlr_applicants (`applicationNo`,`name`, `password`, `contactnumber`, `email`)VALUES (?,?,?,?,?)";
-		$resultRow = pdoQuery($insertSql,array('A'.$applicantNo,$name,$password,$contactnumber,$email));
+	   	
+	   	if($_SESSION['profilepage'] == md5('source')){
+		   	$insertSql = "insert into tlr_applicants (`applicationNo`,`name`, `password`, `contactnumber`, `email`, `currentcompany`, `currentdesignation`, `currentctc`, `expectedctc`, `noticeperiod`, `urgencylevel`, `interest`, `docupload`, `signature`, `createddate`,`isDeleted`, `registerby` ) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+			$resultRow = pdoQuery($insertSql,array('A'.$applicantNo,$name,$password,$contactnumber,$email,$currentcompany,$currentdesignation,$currentctc,$expectedctc,$noticeperiod,$urgencylevel,$interest,$uploadcv,$signature,$today,'N', encrypt_decrypt('decrypt', $_SESSION['userid']) ));
+		} else {
+			$insertSql = "insert into tlr_applicants (`applicationNo`,`name`, `password`, `contactnumber`, `email`, `registerby`) VALUES (?,?,?,?,?,?)";
+			$resultRow = pdoQuery($insertSql,array('A'.$applicantNo,$name,$password,$contactnumber,$email,'self'));
+		}
+		
 		sleep(1);
 		if($resultRow){
 				if(empty($resultRow)){
@@ -109,7 +114,7 @@ if($registration == md5("tlraddapplicantsubmit")){
 	$checkRow = pdoQuery($checkSql,array('N',$email,$applicantId));
 	if(count($checkRow) == 1){
 		$editquery = "UPDATE tlr_applicants SET name = ?, contactnumber = ?,`email` = ?,`currentcompany` = ?,`currentdesignation` = ?,`currentctc` = ?,`expectedctc` = ?,`noticeperiod` = ?,`urgencylevel` = ?,`interest` = ?,`docupload` = ?,`signature` = ?,`createddate` = ? WHERE `id` = ? and `isDeleted` = ?";
-		$resultRow = pdoQuery($editquery,array($name,$contactnumber,$email,$currentcompany,$currentdesignation,$currentctc,$expectedctc,$noticeperiod,$urgencylevel,$interest,$uploadcv,$signature,$today,$applicantId,'N'));
+		$resultRow = pdoQuery($editquery,array($name,$contactnumber,$email,$currentcompany,$currentdesignation,$currentctc,$expectedctc,$noticeperiod,$urgencylevel,$interest,$uploadcv,$signature,$today, $applicantId,'N'));
 		if($resultRow){
 			$message = "success";
 			}else{

@@ -277,6 +277,10 @@ $menuResult = pdoQuery($menuSql, array($menuid, 'N', 0));
                     <i class="fas fa-users-cog"></i>
                     <span class="names d-none d-sm-inline">Applicant Search</span>
                 </a>
+                <a href="testapplicant.php" class="nav-link align-middle px-0 sidebar-link">
+                    <i class="fas fa-users-cog"></i>
+                    <span class="names d-none d-sm-inline">Add Applicant</span>
+                </a>
               <?php $appliedApplicantAcess = 3; 
                     $applicantAccess = 3; 
               } ?>
