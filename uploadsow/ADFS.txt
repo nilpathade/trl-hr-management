@@ -1,0 +1,31 @@
+PS C:\>Set-AdfsRelyingPartyWebTheme  
+    -TargetRelyingPartyName "<RP trust Name>"  
+    -Logo @{path="C:\Images\appillustration.png"}  
+    -Illustration @{path="C:\Images\applogo.jpg"}
+
+Set-AdfsWebTheme -TargetName default -Logo @{path="C:\Images\appillustration.png"}
+
+Set-AdfsWebTheme -TargetName default -Illustration @{path="C:\Images\iprimedils.jpg"}
+
+Set-AdfsGlobalWebContent –CompanyName "iPRIMED"
+
+Set-AdfsGlobalWebContent -HelpDeskLink http://support.iprimed.co/itticket/ -HelpDeskLinkText Help
+
+Set-AdfsGlobalWebContent -HomeLink https://www.iprimed.com/html/index.html -HomeLinkText Home
+
+Set-AdfsGlobalWebContent -ErrorPageAuthorizationErrorMessage "You have received an Authorization error.  Contact iPRIMED IT for assistance."
+
+Set-AdfsGlobalWebContent -UpdatePasswordPageDescriptionText "This is the Contoso Update Password page."
+
+copyrights
+
+New-AdfsWebTheme –Name custom –SourceName default
+
+Export-AdfsWebTheme -Name custom -DirectoryPath C:\CustomWebTheme
+path would be C:\CustomWebTheme\Css\Style.css.
+
+locate and enter #copyright {color:#696969; display:none;}
+
+Set-AdfsWebTheme -TargetName custom -StyleSheet @{locale="";path="C:\customWebTheme\css\style.css"}
+
+Set-AdfsWebConfig -ActiveThemeName custom

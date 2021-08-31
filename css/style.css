@@ -1,0 +1,273 @@
+/* Variables */
+
+:root {
+  --main-bg-color: #ff4f4f;
+  --secondary-color: #3498db;
+  --border-color: #ce4242;
+  --secondary-border: #256b9b;
+  --grey: rgb(48, 48, 48);
+  --light-grey: rgb(182, 182, 182);
+  --light-blue: #cbe5f7;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  height: -webkit-fill-available;
+}
+
+.main-container {
+  display: flex;
+}
+#header {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+}
+.sidebar {
+  position: fixed;
+  /* min-width: 275px; */
+  overflow-y: auto;
+  top: 56px;
+  bottom: 0;
+  background-color: aliceblue;
+  z-index: 200;
+}
+
+.sidebar .names {
+  margin-right: 15px;
+}
+
+.sidebar-link {
+  display: flex;
+  color: rgb(1, 88, 146);
+  width: 100%;
+  padding: 10px;
+  margin: 0 !important;
+  align-items: center;
+  text-decoration: none !important;
+  white-space: nowrap;
+}
+
+.sidebar-link:hover {
+  color: rgb(255, 255, 255);
+  background-color: rgb(1, 88, 146);
+}
+
+.sidebar-link i {
+  padding: 0 15px;
+}
+
+.content {
+  margin-left: 275px;
+  position: relative;
+  padding-left: 15px;
+  padding-top: 15px;
+  width: 100%;
+  max-width: calc(100vw - 300px);
+}
+
+.inner-container {
+  padding: 25px 50px;
+}
+
+@media screen and (max-width: 575px) {
+  .sidebar {
+    min-width: 0;
+  }
+  .sidebar-link {
+    justify-content: center;
+  }
+  .sidebar-link span:first-child {
+    margin-left: 0;
+    padding: 0 15px;
+  }
+  .sidebar.show .sidebar-link {
+    justify-content: start;
+  }
+  .sidebar.show .nav-link {
+    text-align: start !important;
+    transition: all ease 0.5s;
+  }
+  .content {
+    padding-left: 0;
+    max-width: calc(100% - 60px);
+    margin-left: 50px;
+  }
+  .sidebar::-webkit-scrollbar {
+    width: 5px;
+  }
+
+  .sidebar::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px grey;
+    border-radius: 10px;
+  }
+
+  .sidebar::-webkit-scrollbar-thumb {
+    background: rgb(1, 88, 146);
+    border-radius: 10px;
+  }
+  .inner-container-reg {
+    padding: 25px;
+  }
+  .login-container {
+    border-radius: 20px;
+  }
+}
+
+/* Ismail new CSS */
+
+/* Registration.css */
+
+legend {
+  color: #678;
+}
+
+label small {
+  color: #678 !important;
+}
+span.req {
+  color: maroon;
+  font-size: 112%;
+}
+
+.mandateinfo {
+  font-size: 12px;
+}
+
+/* Registration.css end  */
+
+.custom-btn {
+  padding: 5px 20px;
+  border-radius: 10px;
+  color: #fff;
+  text-decoration: none;
+  background-color: var(--main-bg-color);
+  border: none;
+  border-bottom: 5px solid var(--border-color);
+  text-shadow: 0px -2px var(--border-color);
+  white-space: nowrap;
+  text-transform: capitalize;
+}
+
+.custom-btn:active {
+  border-bottom: transparent;
+  transform: translateY(5px);
+}
+
+.custom-btn:focus {
+  outline: none;
+}
+
+.custom-btn:hover {
+  color: #fff;
+  text-decoration: none;
+  background-color: var(--main-bg-color);
+}
+
+.custom-btn2 {
+  background-color: var(--secondary-color);
+  border-color: var(--secondary-border);
+  text-shadow: 0px -2px var(--secondary-border);
+}
+
+.custom-btn2:hover {
+  background-color: var(--secondary-color);
+}
+
+.bor-right {
+  border-right: 2px solid var(--secondary-color);
+  margin-right: 5px;
+  padding-right: 5px;
+}
+
+.icon {
+  color: var(--secondary-color);
+}
+
+.custom-thead {
+  background-color: var(--main-bg-color);
+  color: white;
+}
+
+.custom-thead tr th {
+  white-space: nowrap;
+}
+
+.login-body {
+  background-color: #ffa252;
+  min-height: 100vh;
+  min-height: -webkit-fill-available;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 50px 0;
+}
+
+.login-container {
+  background-color: white;
+  max-width: 750px;
+}
+
+.link {
+  text-decoration: none !important;
+}
+
+.main-head {
+  text-transform: uppercase;
+  color: var(--border-color);
+  font-size: 20px;
+}
+
+.sub-head {
+  color: var(--grey);
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  font-size: 20px;
+}
+
+.custom-input {
+  width: 100%;
+  padding: 7px 0px;
+  border: none;
+  border-bottom: 1px solid var(--light-grey);
+  outline: none;
+}
+
+.custom-input:focus {
+  outline: none;
+  border-color: var(--light-blue);
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  box-shadow: 0 0 0 30px white inset !important;
+}
+
+.inner-container-reg {
+  width: 600px;
+  max-width: calc(100vw - 50px);
+}
+
+.small-text {
+  font-size: 14px;
+}
+
+.names.show {
+  display: inline !important;
+}
+
+.responsive-table {
+  overflow-x: auto;
+}
+
+.register-container {
+  background-color: white;
+  border-radius: 20px;
+}
